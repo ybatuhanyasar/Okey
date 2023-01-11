@@ -17,23 +17,23 @@ public class AppConfig {
 
         PlayerService playerService = new PlayerServiceImpl();
 
-        List<Tile> tiles = tileService.initializeTiles();
+        List<Tile> tiles = tileService.initializeTiles(); // initialize tiles.
 
-        tileService.shuffleTiles(tiles);
+        tileService.shuffleTiles(tiles); // shuffle tiles.
 
-        Tile pointer = tileService.choosePointer(tiles);
+        Tile pointer = tileService.choosePointer(tiles); // choose pointer.
 
-        tileService.chooseJoker(tiles, pointer);
+        tileService.chooseJoker(tiles, pointer); // choose joker.
 
-        List<Player> players = playerService.initializePlayers(4);
+        List<Player> players = playerService.initializePlayers(4); // initialize players.
 
-        playerService.distributeTiles(tiles, players);
+        playerService.distributeTiles(tiles, players); // distribute tiles to each player.
 
-        tileService.printPointerAndJoker(tiles);
+        tileService.printPointerAndJoker(tiles); // print pointer and joker to the console.
 
-        List<Player> winners = playerService.comparePlayersScore(players);
+        List<Player> winners = playerService.comparePlayersScore(players); // determine winners with their left tiles.
 
-        playerService.printWinners(winners);
+        playerService.printWinners(winners); // print winners.
 
     }
 }

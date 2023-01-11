@@ -11,6 +11,7 @@ public interface PlayerService {
 
     void distributeTiles(List<Tile> tiles, List<Player> players);
 
+    //This function is find winner player according to their left irrelevant tiles.
     List<Player> comparePlayersScore(List<Player> players);
 
     void printWinners(List<Player> players);

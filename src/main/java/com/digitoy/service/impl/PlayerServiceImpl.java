@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/*
+    This service implementation is about the players utility.
+    It contains a group of methods and functions about players activity.
+ */
+
 public class PlayerServiceImpl implements PlayerService {
 
     private static final Random random = new Random();
@@ -41,7 +46,7 @@ public class PlayerServiceImpl implements PlayerService {
         int index = 0;
 
         for (Player player : players) {
-            if (player.isStarter()) {
+            if (player.isStarter()) { // if current player is starter the player gets one more tile.
                 player.setRack(tiles.subList(index, index + 14));
                 index += 14;
             } else {
@@ -60,11 +65,11 @@ public class PlayerServiceImpl implements PlayerService {
             rackService.sortRack(player.getRack());
             List<List<Tile>> finalRack = rackService.finalRack(player.getRack());
             player.setFinalRack(finalRack);
-            if (finalRack.get(finalRack.size() - 1).size() < irrelevantTiles) {
+            if (finalRack.get(finalRack.size() - 1).size() < irrelevantTiles) { // comparing with previous left tiles.
                 irrelevantTiles = finalRack.get(finalRack.size() - 1).size();
                 winners.clear();
                 winners.add(player);
-            } else if (finalRack.get(finalRack.size() - 1).size() == irrelevantTiles) {
+            } else if (finalRack.get(finalRack.size() - 1).size() == irrelevantTiles) { // if left tiles are equal with previous player both players considered as winners.
                 winners.add(player);
             }
         }
